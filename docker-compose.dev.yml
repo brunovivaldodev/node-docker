@@ -1,0 +1,12 @@
+version: '3'
+services:
+  node-devops:
+    build: 
+      context: .
+      target : dev
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command : yarn dev
