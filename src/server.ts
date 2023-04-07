@@ -1,5 +1,6 @@
 import express from "express"
 import mongoose from "mongoose";
+import cors from "cors"
 
 import { config } from "./config"
 
@@ -10,8 +11,10 @@ mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_
     .catch((e)=>console.log(e))
 
 const app = express()
+app.enable("trust proxy")
+app.use(cors())
 
-app.get("/",(req,res)=> {
+app.get("/api",(req,res)=> {
     res.send("<h2>Hi There!!</h2>")
 })
 
