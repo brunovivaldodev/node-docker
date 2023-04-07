@@ -25,7 +25,6 @@ COPY yarn.lock .
 COPY package.json . 
 RUN yarn --prod
 COPY --from=build ./app/dist ./
-RUN ls -la 
 ENV PORT 3000
 EXPOSE ${PORT}
 CMD ["node", "./server.js"]
